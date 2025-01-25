@@ -235,5 +235,30 @@
       <p>&copy; 2025 George's Portfolio. All rights reserved.</p>
     </footer>
   </div>
+
+  <script>
+    // JavaScript for smooth scroll and modern animations
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', event => {
+        event.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        targetElement.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in, .slide-in, .zoom-in').forEach(element => {
+      observer.observe(element);
+    });
+  </script>
 </body>
 </html>
+
