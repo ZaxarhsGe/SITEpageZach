@@ -1,98 +1,239 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>George's Portfolio</title>
+  <style>
+    /* CSS */
 
-const Portfolio = () => {
-  return (
-    <div className="min-h-screen bg-gray-100 p-4">
-      {/* Navbar */}
-      <header className="flex justify-between items-center bg-white shadow-md p-4 rounded-lg">
-        <h1 className="text-2xl font-bold">George's Portfolio</h1>
-        <nav>
-          <ul className="flex gap-4">
-            <li><a href="#home" className="hover:underline">Home</a></li>
-            <li><a href="#skills" className="hover:underline">Skills</a></li>
-            <li><a href="#projects" className="hover:underline">Projects</a></li>
-            <li><a href="#education" className="hover:underline">Education</a></li>
-          </ul>
-        </nav>
-      </header>
+    .portfolio-container {
+      min-height: 100vh;
+      background-color: #f3f4f6;
+      padding: 1rem;
+      font-family: Arial, sans-serif;
+    }
 
-      {/* Home Section */}
-      <section id="home" className="text-center py-16">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <h2 className="text-4xl font-bold mb-4">Welcome to My Portfolio!</h2>
-          <p className="text-gray-700">I'm George, a passionate developer with expertise in machine learning and cybersecurity.</p>
-          <div className="flex justify-center gap-4 mt-6">
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-2xl">
-              <AiFillGithub />
-            </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-2xl">
-              <AiFillLinkedin />
-            </a>
-          </div>
-        </motion.div>
-      </section>
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #ffffff;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
 
-      {/* Skills Section */}
-      <section id="skills" className="py-16 bg-white shadow-md rounded-lg my-4">
-        <h2 className="text-3xl font-bold text-center mb-8">Skills</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <Card>
-            <CardContent className="text-center">Python</CardContent>
-          </Card>
-          <Card>
-            <CardContent className="text-center">Machine Learning</CardContent>
-          </Card>
-          <Card>
-            <CardContent className="text-center">Cybersecurity</CardContent>
-          </Card>
-          <Card>
-            <CardContent className="text-center">React</CardContent>
-          </Card>
+    .navbar-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .navbar-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: #4b5563;
+      transition: color 0.3s;
+    }
+
+    .nav-link:hover {
+      color: #1f2937;
+    }
+
+    .home-section {
+      text-align: center;
+      padding: 4rem 0;
+    }
+
+    .home-title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    .home-description {
+      color: #6b7280;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .icon {
+      font-size: 2rem;
+      color: #4b5563;
+      transition: color 0.3s;
+    }
+
+    .icon:hover {
+      color: #1f2937;
+    }
+
+    .skills-section, .projects-section, .education-section {
+      background-color: #ffffff;
+      padding: 2rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .skills-grid, .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .skill-card, .project-card {
+      text-align: center;
+      font-weight: bold;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      background-color: #f9fafb;
+      transition: transform 0.3s;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .skill-card:hover, .project-card:hover {
+      transform: scale(1.05);
+    }
+
+    .education-details {
+      text-align: center;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #ffffff;
+      border-radius: 0.5rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Animations */
+    .fade-in {
+      animation: fadeIn 1.5s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    .slide-in {
+      animation: slideIn 1s ease-in;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    .zoom-in {
+      animation: zoomIn 0.8s ease-in;
+    }
+
+    @keyframes zoomIn {
+      from {
+        transform: scale(0.9);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="portfolio-container">
+    <!-- Navbar -->
+    <header class="navbar">
+      <h1 class="navbar-title">George's Portfolio</h1>
+      <nav>
+        <ul class="navbar-links">
+          <li><a href="#home" class="nav-link">Home</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#education" class="nav-link">Education</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home" class="home-section">
+      <div class="fade-in">
+        <h2 class="home-title">Welcome to My Portfolio!</h2>
+        <p class="home-description">I'm George, a passionate developer with expertise in machine learning and cybersecurity.</p>
+        <div class="social-icons">
+          <a href="https://github.com" target="_blank" class="icon">GitHub</a>
+          <a href="https://linkedin.com" target="_blank" class="icon">LinkedIn</a>
         </div>
-      </section>
+      </div>
+    </section>
 
-      {/* Projects Section */}
-      <section id="projects" className="py-16">
-        <h2 className="text-3xl font-bold text-center mb-8">Projects</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <Card>
-            <CardContent>
-              <h3 className="font-bold">Chatbot Project</h3>
-              <p>A Flask-based chatbot integrated with AWS and BERT for intelligent responses.</p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardContent>
-              <h3 className="font-bold">Phishing Detection</h3>
-              <p>A machine learning project for identifying phishing texts using NLP techniques.</p>
-            </CardContent>
-          </Card>
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section">
+      <h2 class="section-title slide-in">Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-card zoom-in">Python</div>
+        <div class="skill-card zoom-in">Machine Learning</div>
+        <div class="skill-card zoom-in">Cybersecurity</div>
+        <div class="skill-card zoom-in">React</div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section">
+      <h2 class="section-title slide-in">Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card zoom-in">
+          <h3>Chatbot Project</h3>
+          <p>A Flask-based chatbot integrated with AWS and BERT for intelligent responses.</p>
         </div>
-      </section>
-
-      {/* Education Section */}
-      <section id="education" className="py-16 bg-white shadow-md rounded-lg my-4">
-        <h2 className="text-3xl font-bold text-center mb-8">Education</h2>
-        <div className="text-center">
-          <p>BSc in Computer Science - Metropolitan College</p>
-          <p>Specialized in Machine Learning and Cybersecurity</p>
+        <div class="project-card zoom-in">
+          <h3>Phishing Detection</h3>
+          <p>A machine learning project for identifying phishing texts using NLP techniques.</p>
         </div>
-      </section>
+      </div>
+    </section>
 
-      {/* Footer */}
-      <footer className="text-center py-4 mt-4 bg-white shadow-md rounded-lg">
-        <p>&copy; 2025 George's Portfolio. All rights reserved.</p>
-      </footer>
-    </div>
-  );
-};
+    <!-- Education Section -->
+    <section id="education" class="education-section">
+      <h2 class="section-title slide-in">Education</h2>
+      <div class="education-details fade-in">
+        <p>BSc in Computer Science - Metropolitan College</p>
+        <p>Specialized in Machine Learning and Cybersecurity</p>
+      </div>
+    </section>
 
-export default Portfolio;
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2025 George's Portfolio. All rights reserved.</p>
+    </footer>
+  </div>
+</body>
+</html>
