@@ -9,7 +9,7 @@
 
     .portfolio-container {
       min-height: 100vh;
-      background: url('https://images.unsplash.com/photo-1496096265110-f83ad7f96608?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
+      background: url('https://images.unsplash.com/photo-1510906594845-bc082582c8cc?q=80&w=2044&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
       padding: 1rem;
       font-family: 'Arial', sans-serif;
       color: #ffffff;
@@ -29,6 +29,7 @@
       font-size: 1.8rem;
       font-weight: bold;
       color: #4fc3f7;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
 
     .navbar-links {
@@ -55,10 +56,15 @@
       font-size: 3rem;
       font-weight: bold;
       margin-bottom: 1rem;
+      text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7);
+      background: linear-gradient(45deg, #4fc3f7, #ffffff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .home-description {
       color: #e0f7fa;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
 
     .social-icons {
@@ -92,6 +98,7 @@
       text-align: center;
       margin-bottom: 2rem;
       color: #4fc3f7;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
     }
 
     .skills-grid, .projects-grid {
@@ -106,13 +113,14 @@
       padding: 1rem;
       border-radius: 0.5rem;
       background-color: #263238;
-      transition: transform 0.3s;
+      transition: transform 0.3s, box-shadow 0.3s;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
       color: #ffffff;
     }
 
     .skill-card:hover, .project-card:hover {
       transform: scale(1.05);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
     }
 
     .education-details {
@@ -267,7 +275,3 @@
   </script>
 </body>
 </html>
-
-</body>
-</html>
-
