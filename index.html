@@ -1,183 +1,241 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>George's Portfolio</title>
   <style>
-    /* CSS */
-
-    .portfolio-container {
-      min-height: 100vh;
-      background: url('https://images.unsplash.com/photo-1510906594845-bc082582c8cc?q=80&w=2044&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
-      padding: 1rem;
-      font-family: 'Arial', sans-serif;
-      color: #ffffff;
+    /* Reset & base */
+    *, *::before, *::after {
+      box-sizing: border-box;
     }
-
-    .navbar {
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #0f2027;  /* fallback */
+      background: linear-gradient(135deg, #203a43 0%, #2c5364 100%);
+      color: #e0e6f0;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+    a {
+      color: #4fc3f7;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover, a:focus {
+      color: #81d4fa;
+      outline: none;
+    }
+    h1, h2, h3 {
+      margin: 0 0 1rem 0;
+      font-weight: 700;
+      color: #81d4fa;
+      text-shadow: 0 0 8px rgba(129, 212, 250, 0.7);
+    }
+    p {
+      margin: 0 0 1.5rem 0;
+      color: #cfd8dc;
+    }
+    /* Container */
+    .portfolio-container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem 3rem;
+    }
+    /* Navbar */
+    header.navbar {
+      position: sticky;
+      top: 0;
+      background: rgba(15, 32, 39, 0.85);
+      backdrop-filter: saturate(180%) blur(10px);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: rgba(0, 0, 0, 0.8);
-      padding: 1rem;
-      border-radius: 0.5rem;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 1rem 1.5rem;
+      border-radius: 0 0 12px 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      z-index: 1000;
     }
-
     .navbar-title {
       font-size: 1.8rem;
-      font-weight: bold;
+      letter-spacing: 1.5px;
       color: #4fc3f7;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      user-select: none;
     }
-
-    .navbar-links {
+    nav ul.navbar-links {
+      list-style: none;
       display: flex;
-      gap: 1rem;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
     }
-
-    .nav-link {
-      text-decoration: none;
-      color: #ffffff;
-      transition: color 0.3s;
+    nav ul.navbar-links li a.nav-link {
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 6px;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
-
-    .nav-link:hover {
+    nav ul.navbar-links li a.nav-link:hover,
+    nav ul.navbar-links li a.nav-link:focus {
+      background-color: #4fc3f7;
+      color: #0f2027;
+      outline: none;
+    }
+    /* Sections */
+    section {
+      margin-top: 4rem;
+      padding: 2rem 2rem 3rem;
+      background: rgba(15, 32, 39, 0.75);
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(15, 32, 39, 0.6);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 32px rgba(15, 32, 39, 0.85);
+    }
+    .section-title {
+      font-size: 2.4rem;
+      margin-bottom: 2rem;
+      text-align: center;
       color: #4fc3f7;
+      text-shadow: 0 0 10px #4fc3f7;
     }
-
+    /* Home Section */
     .home-section {
       text-align: center;
-      padding: 4rem 0;
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+      background: url('https://images.unsplash.com/photo-1510906594845-bc082582c8cc?q=80&w=2044&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center/cover;
+      border-radius: 12px;
+      box-shadow: inset 0 0 0 1000px rgba(15, 32, 39, 0.6);
+      color: #e0f7fa;
+      user-select: none;
     }
-
     .home-title {
-      font-size: 3rem;
-      font-weight: bold;
+      font-size: 3.5rem;
+      font-weight: 900;
       margin-bottom: 1rem;
-      text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7);
-      background: linear-gradient(45deg, #4fc3f7, #ffffff);
+      background: linear-gradient(90deg, #4fc3f7, #81d4fa);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 12px rgba(79, 195, 247, 0.8);
     }
-
     .home-description {
-      color: #e0f7fa;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      font-size: 1.3rem;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      text-shadow: 0 0 8px rgba(0,0,0,0.5);
     }
-
+    /* Social Icons */
     .social-icons {
       display: flex;
       justify-content: center;
-      gap: 1rem;
-      margin-top: 1rem;
+      gap: 2rem;
     }
-
     .icon {
-      font-size: 2rem;
-      color: #ffffff;
-      transition: color 0.3s;
+      width: 40px;
+      height: 40px;
+      fill: #e0f7fa;
+      transition: fill 0.3s ease;
+      cursor: pointer;
     }
-
-    .icon:hover {
-      color: #4fc3f7;
+    .icon:hover, .icon:focus {
+      fill: #4fc3f7;
+      outline: none;
     }
-
-    .skills-section, .projects-section, .education-section {
-      background-color: rgba(0, 0, 0, 0.7);
-      padding: 2rem;
-      border-radius: 0.5rem;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-      margin-bottom: 2rem;
-    }
-
-    .section-title {
-      font-size: 2.5rem;
-      font-weight: bold;
-      text-align: center;
-      margin-bottom: 2rem;
-      color: #4fc3f7;
-      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-    }
-
+    /* Skills & Projects Grid */
     .skills-grid, .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
     }
-
     .skill-card, .project-card {
+      background: #1c2a35;
+      border-radius: 12px;
+      padding: 1.5rem 1.25rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      color: #cfd8dc;
+      font-weight: 600;
       text-align: center;
-      font-weight: bold;
-      padding: 1rem;
-      border-radius: 0.5rem;
-      background-color: #263238;
-      transition: transform 0.3s, box-shadow 0.3s;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-      color: #ffffff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+      user-select: none;
     }
-
     .skill-card:hover, .project-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+      transform: translateY(-6px);
+      box-shadow: 0 10px 24px rgba(79, 195, 247, 0.7);
+      color: #81d4fa;
     }
-
+    .project-card h3 {
+      margin-bottom: 0.75rem;
+      color: #4fc3f7;
+    }
+    /* Education */
     .education-details {
       text-align: center;
-      color: #e0f7fa;
+      font-size: 1.1rem;
+      color: #b0bec5;
+      user-select: none;
     }
-
-    .footer {
+    /* Footer */
+    footer.footer {
       text-align: center;
-      padding: 1rem;
-      background-color: rgba(0, 0, 0, 0.8);
-      border-radius: 0.5rem;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-      color: #ffffff;
+      padding: 1.5rem 1rem;
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: #90a4ae;
+      user-select: none;
     }
-
     /* Animations */
     .fade-in {
-      animation: fadeIn 1.5s ease-in;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s forwards;
     }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
-    }
-
     .slide-in {
-      animation: slideIn 1s ease-in;
+      opacity: 0;
+      transform: translateX(-40px);
+      animation: slideInRight 1s forwards;
     }
-
-    @keyframes slideIn {
-      from {
-        transform: translateX(-100%);
-        opacity: 0;
-      }
-      to {
-        transform: translateX(0);
-        opacity: 1;
-      }
-    }
-
     .zoom-in {
-      animation: zoomIn 0.8s ease-in;
+      opacity: 0;
+      transform: scale(0.85);
+      animation: zoomIn 0.8s forwards;
     }
-
-    @keyframes zoomIn {
-      from {
-        transform: scale(0.9);
-        opacity: 0;
-      }
+    @keyframes fadeInUp {
       to {
-        transform: scale(1);
         opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes slideInRight {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    @keyframes zoomIn {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    /* Responsive tweaks */
+    @media (max-width: 600px) {
+      .home-title {
+        font-size: 2.5rem;
+      }
+      nav ul.navbar-links {
+        gap: 1rem;
+      }
+      .skills-grid, .projects-grid {
+        grid-template-columns: 1fr;
+      }
+      section {
+        padding: 1.5rem 1rem 2rem;
       }
     }
   </style>
@@ -198,80 +256,86 @@
     </header>
 
     <!-- Home Section -->
-    <section id="home" class="home-section">
-      <div class="fade-in">
-        <h2 class="home-title">Welcome to My Portfolio!</h2>
-        <p class="home-description">I'm George, a passionate developer with expertise in machine learning and cybersecurity.</p>
-        <div class="social-icons">
-          <a href="https://github.com" target="_blank" class="icon">GitHub</a>
-          <a href="https://linkedin.com" target="_blank" class="icon">LinkedIn</a>
-        </div>
+    <section id="home" class="home-section fade-in" tabindex="-1">
+      <h2 class="home-title">Welcome to My Portfolio!</h2>
+      <p class="home-description">I'm George, a passionate developer with expertise in machine learning and cybersecurity.</p>
+      <div class="social-icons" aria-label="Social media links">
+        <a href="https://github.com" target="_blank" rel="noopener" aria-label="GitHub" class="icon" tabindex="0">
+          <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <title>GitHub</title>
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.11.82-.26.82-.577v-2.234c-3.338.726-4.033-1.61-4.033-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.09-.745.083-.73.083-.73 1.205.085 1.84 1.237 1.84 1.237 1.07 1.835 2.807 1.305 3.492.997.108-.775.418-1.305.76-1.605-2.665-.3-5.466-1.335-5.466-5.93 0-1.31.47-2.38 1.236-3.22-.124-.303-.536-1.523.117-3.176 0 0 1.008-.322 3.3 1.23a11.5 11.5 0 013.003-.404c1.02.005 2.045.138 3.003.404 2.29-1.552 3.296-1.23 3.296-1.23.655 1.653.243 2.873.12 3.176.77.84 1.235 1.91 1.235 3.22 0 4.61-2.807 5.625-5.48 5.92.43.37.823 1.1.823 2.22v3.293c0 .32.218.694.825.576C20.565 21.796 24 17.3 24 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+        </a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn" class="icon" tabindex="0">
+          <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <title>LinkedIn</title>
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.352V9h3.414v1.561h.049c.476-.9 1.637-1.852 3.37-1.852 3.602 0 4.268 2.37 4.268 5.455v6.288zM5.337 7.433a2.07 2.07 0 11.001-4.14 2.07 2.07 0 01-.001 4.14zm1.777 13.019H3.56V9h3.554v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.226.792 24 1.771 24h20.451C23.2 24 24 23.226 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/>
+          </svg>
+        </a>
       </div>
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="skills-section">
-      <h2 class="section-title slide-in">Skills</h2>
+    <section id="skills" class="skills-section slide-in" tabindex="-1">
+      <h2 class="section-title">Skills</h2>
       <div class="skills-grid">
-        <div class="skill-card zoom-in">Python</div>
-        <div class="skill-card zoom-in">Machine Learning</div>
-        <div class="skill-card zoom-in">Cybersecurity</div>
-        <div class="skill-card zoom-in">React</div>
+        <div class="skill-card zoom-in" tabindex="0">Python</div>
+        <div class="skill-card zoom-in" tabindex="0">Machine Learning</div>
+        <div class="skill-card zoom-in" tabindex="0">Cybersecurity</div>
+        <div class="skill-card zoom-in" tabindex="0">React</div>
       </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="projects-section">
-      <h2 class="section-title slide-in">Projects</h2>
+    <section id="projects" class="projects-section slide-in" tabindex="-1">
+      <h2 class="section-title">Projects</h2>
       <div class="projects-grid">
-        <div class="project-card zoom-in">
-          <h3>Chatbot Project</h3>
+        <article class="project-card zoom-in" tabindex="0" aria-labelledby="chatbot-title">
+          <h3 id="chatbot-title">Chatbot Project</h3>
           <p>A Flask-based chatbot integrated with AWS and BERT for intelligent responses.</p>
-        </div>
-        <div class="project-card zoom-in">
-          <h3>Phishing Detection</h3>
+        </article>
+        <article class="project-card zoom-in" tabindex="0" aria-labelledby="phishing-title">
+          <h3 id="phishing-title">Phishing Detection</h3>
           <p>A machine learning project for identifying phishing texts using NLP techniques.</p>
-        </div>
+        </article>
       </div>
     </section>
 
     <!-- Education Section -->
-    <section id="education" class="education-section">
-      <h2 class="section-title slide-in">Education</h2>
-      <div class="education-details fade-in">
+    <section id="education" class="education-section fade-in" tabindex="-1">
+      <h2 class="section-title">Education</h2>
+      <div class="education-details">
         <p>BSc in Computer Science - Metropolitan College</p>
         <p>Specialized in Machine Learning and Cybersecurity</p>
       </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
       <p>&copy; 2025 George's Portfolio. All rights reserved.</p>
     </footer>
   </div>
 
   <script>
-    // JavaScript for smooth scroll and modern animations
-    document.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', event => {
-        event.preventDefault();
-        const targetId = link.getAttribute('href').substring(1);
-        const targetElement = document.getElementById(targetId);
-        targetElement.scrollIntoView({ behavior: 'smooth' });
-      });
-    });
-
-    const observer = new IntersectionObserver(entries => {
+    // Intersection Observer for animations
+    const observerOptions = {
+      threshold: 0.15
+    };
+    const observer = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('fade-in');
+        if(entry.isIntersecting) {
+          entry.target.style.animationPlayState = 'running';
+          observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1 });
+    }, observerOptions);
 
-    document.querySelectorAll('.fade-in, .slide-in, .zoom-in').forEach(element => {
-      observer.observe(element);
+    document.querySelectorAll('.fade-in, .slide-in, .zoom-in').forEach(el => {
+      el.style.animationPlayState = 'paused';
+      observer.observe(el);
     });
+
+    // Smooth scroll handled by CSS scroll-behavior
   </script>
 </body>
 </html>
